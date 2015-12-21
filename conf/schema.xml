@@ -347,6 +347,9 @@
 <copyField source="*_mdt" dest="*_mt"/>
 <!--Edged text to support islandora_authority -->
 <copyField source="mods_titleInfo_title_s" dest="mods_titleInfo_title_et"/>
+<copyField source="PID" dest="PID_et"/>
+<copyField source="MADS_department_ms" dest="MADS_department_et"/>
+<copyField source="MADS_fullname_ms" dest="MADS_fullname_et"/>
 
 <!-- The following line is a bit of a performance hog, I would look to remove it if the indexing takes a long time. -->
 <copyField source="*" dest="catch_all_fields_mt"/>
