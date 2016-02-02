@@ -138,7 +138,11 @@
       </analyzer>
     </fieldType>
 
+<<<<<<< HEAD
     <!-- A text field that only splits on whitespace for exact matching of words -->
+=======
+   <!-- A text field that only splits on whitespace for exact matching of words -->
+>>>>>>> 8e75caa... Whitespace.
     <fieldType name="text_ws" class="solr.TextField" positionIncrementGap="100">
       <analyzer>
         <tokenizer class="solr.WhitespaceTokenizerFactory"/>
@@ -317,7 +321,7 @@
    <field name="dc.description" type="text_fgs"  indexed="true"  stored="true" multiValued="true"/>
    <field name="lib4ri_publisher_ms" type="string" indexed="true" stored="true" multiValued="true"/>
    <dynamicField name="*" type="text_fgs"  indexed="true"  stored="true" multiValued="true"/>
-<field name="_version_" type="long" indexed="true" stored="true"/>
+   <field name="_version_" type="long" indexed="true" stored="true"/>
  </fields>
 
  <!-- Field to use to determine and enforce document uniqueness.
