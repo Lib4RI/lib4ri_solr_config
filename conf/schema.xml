@@ -316,6 +316,7 @@
         unknown fields indexed and/or stored by default -->
    <field name="dc.description" type="text_fgs"  indexed="true"  stored="true" multiValued="true"/>
    <field name="lib4ri_publisher_mt" type="text" indexed="true" stored="true" multiValued="true"/>
+   <field name="lib4ri_all_authors_mt" type="text" indexed="true" stored="true" multiValued="true"/>
    <dynamicField name="*" type="text_fgs"  indexed="true"  stored="true" multiValued="true"/>
 
  </fields>
@@ -354,6 +355,7 @@
 <copyField source="mods_originInfo_publisher_ms" dest="lib4ri_publisher_mt"/>
 <copyField source="mods_relatedItem_host_originInfo_publisher_s" dest="lib4ri_publisher_mt"/>
 <copyField source="mods_relatedItem_host_originInfo_publisher_ms" dest="lib4ri_publisher_mt"/>
+<copyField source="mods_name_personal_*" dest="lib4ri_all_authors_mt"/>
 <!-- The following line is a bit of a performance hog, I would look to remove it if the indexing takes a long time. -->
 <copyField source="*" dest="catch_all_fields_mt"/>
 <copyField source="mods_*" dest="catch_all_MODS_mt"/>
