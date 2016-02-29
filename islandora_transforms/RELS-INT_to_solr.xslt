@@ -5,14 +5,16 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:java="http://xml.apache.org/xalan/java"
     xmlns:foxml="info:fedora/fedora-system:def/foxml#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" exclude-result-prefixes="rdf java">
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:islandora="http://islandora.ca/ontology/relsint#" exclude-result-prefixes="rdf java">
+    <xsl:include href="/usr/local/fedora/tomcat/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/index/FgsIndex/islandora_transforms/lib4ri_fulltext.xslt"/>
     <xsl:variable name="single_valued_hashset_for_rels_int" select="java:java.util.HashSet.new()"/>
     <xsl:template match="foxml:datastream[@ID='RELS-INT']/foxml:datastreamVersion[last()]"
         name="index_RELS-INT">
         <xsl:param name="content"/>
         <xsl:param name="prefix">RELS_INT_</xsl:param>
         <xsl:param name="suffix">_ms</xsl:param>
-
+        <xsl:apply-templates select="$content/rdf:RDF/rdf:Description[not(islandora:lib4ridora-multi-embargo-availability)]" mode="index_lib4ri_fulltext"/>
         <xsl:for-each select="$content//rdf:Description/*[@rdf:resource]">
             <!-- Prevent multiple generating multiple instances of single-valued fields
             by tracking things in a HashSet -->
