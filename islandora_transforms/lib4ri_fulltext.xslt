@@ -17,6 +17,6 @@
      </field>
    </xsl:if>
  </xsl:template>
- <xsl:template match="text()" mode="index_libr4i_fulltext"/>
+ <xsl:template match="text()" mode="index_lib4ri_fulltext"/>
 </xsl:stylesheet>
 
