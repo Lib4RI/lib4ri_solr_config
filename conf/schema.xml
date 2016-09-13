@@ -317,6 +317,7 @@
    <field name="dc.description" type="text_fgs"  indexed="true"  stored="true" multiValued="true"/>
    <field name="lib4ri_publisher_mt" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="lib4ri_all_authors_mt" type="text" indexed="true" stored="true" multiValued="true"/>
+   <field name="lib4ri_fulltext" type="text" indexed="true" stored="false" multiValued="true"/>
    <dynamicField name="*" type="text_fgs"  indexed="true"  stored="true" multiValued="true"/>
    <field name="_version_" type="long" indexed="true" stored="true"/>
  </fields>

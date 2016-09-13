@@ -14,7 +14,7 @@
         <xsl:param name="content"/>
         <xsl:param name="prefix">RELS_INT_</xsl:param>
         <xsl:param name="suffix">_ms</xsl:param>
-        <xsl:apply-templates select="$content/rdf:RDF/rdf:Description[not(islandora:lib4ridora-multi-embargo-availability)]" mode="index_lib4ri_fulltext"/>
+        <xsl:apply-templates select="$content/rdf:RDF/rdf:Description[islandora:lib4ridora-multi-embargo-availability]" mode="index_lib4ri_fulltext"/>
         <xsl:for-each select="$content//rdf:Description/*[@rdf:resource]">
             <!-- Prevent multiple generating multiple instances of single-valued fields
             by tracking things in a HashSet -->
