@@ -331,7 +331,7 @@
  <defaultSearchField>dc.description</defaultSearchField>
 
  <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
- <solrQueryParser defaultOperator="OR"/>
+ <solrQueryParser defaultOperator="AND"/>
 
   <!-- copyField commands copy one field to another at the time a document
         is added to the index.  It's used either to index the same field differently,
@@ -352,6 +352,7 @@
 <copyField source="PID" dest="PID_et"/>
 <copyField source="MADS_department_ms" dest="MADS_department_et"/>
 <copyField source="MADS_fullname_ms" dest="MADS_fullname_et"/>
+<copyField source="MADS_variant_fullname_ms" dest="MADS_variant_fullname_et"/>
 <copyField source="mods_originInfo_publisher_s" dest="lib4ri_publisher_mt"/>
 <copyField source="mods_originInfo_publisher_ms" dest="lib4ri_publisher_mt"/>
 <copyField source="mods_relatedItem_host_originInfo_publisher_s" dest="lib4ri_publisher_mt"/>
