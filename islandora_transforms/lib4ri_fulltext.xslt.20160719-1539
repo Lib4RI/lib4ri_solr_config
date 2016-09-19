@@ -12,11 +12,11 @@
    <xsl:variable name="PDF_CONTENT" select="normalize-space(exts:getDatastreamText($PID, $REPOSITORYNAME, $PDF_DS, $FEDORASOAP, $FEDORAUSER, $FEDORAPASS, $TRUSTSTOREPATH, $TRUSTSTOREPASS))"/>
   <xsl:if test="not(normalize-space($PDF_CONTENT)='')">
      <field>
-       <xsl:attribute name="name">lib4ri_fulltext</xsl:attribute>
+       <xsl:attribute name="name">lib4ri_fulltext_ms</xsl:attribute>
        <xsl:value-of select="$PDF_CONTENT"/>
      </field>
    </xsl:if>
  </xsl:template>
- <xsl:template match="text()" mode="index_lib4ri_fulltext"/>
+ <xsl:template match="text()" mode="index_libr4i_fulltext"/>
 </xsl:stylesheet>
 
