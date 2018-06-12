@@ -1,0 +1,17 @@
+
+# File location:
+/usr/local/fedora/tomcat/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/index/FgsIndex/islandora_transforms/CIT-DATA_to_solr.xslt
+
+# Example XML for custom datastream (which is CIT-DATA_to_solr.xslt tuned for):
+<citationData id="eawag:14327">
+    <citation provider="Scopus">
+        <metrics type="citedby-count">
+            <timeStamp>2018-06-08 16:38:46</timeStamp>
+            <value>4</value>
+            <apiUrl>https://api.elsevier.com/content/search/scopus</apiUrl>
+            <apiQuery>?query=DOI(10.1073/pnas.1619147114)&amp;field=citedby-count&amp;APIKey=</apiQuery>
+            <webLink>https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&amp;doi=10.1073/pnas.1619147114</webLink>
+        </metrics>
+    </citation>
+</citationData>
+
