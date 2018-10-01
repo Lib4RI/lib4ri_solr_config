@@ -21,18 +21,21 @@
     <xsl:param name="prefix">lib4ri_citationData_</xsl:param>
     <xsl:param name="suffix"></xsl:param>
     <xsl:for-each select="citation">
-      <field>
-        <xsl:attribute name="name">
-           <xsl:value-of select="concat($prefix, @provider, '_', metrics/@type, '_timeStamp', $suffix)"/>
-        </xsl:attribute>
-        <xsl:value-of select="metrics/timeStamp/text()"/>
-      </field>
-      <field>
-        <xsl:attribute name="name">
-           <xsl:value-of select="concat($prefix, @provider, '_', metrics/@type, '_value', $suffix)"/>
-        </xsl:attribute>
-        <xsl:value-of select="metrics/value/text()"/>
-      </field>
+      <xsl:variable name="provider" select="@provider"/>
+      <xsl:for-each select="metrics">
+        <field>
+          <xsl:attribute name="name">
+             <xsl:value-of select="concat($prefix, $provider, '_', @type, '_timeStamp', $suffix)"/>
+          </xsl:attribute>
+          <xsl:value-of select="timeStamp/text()"/>
+        </field>
+        <field>
+          <xsl:attribute name="name">
+             <xsl:value-of select="concat($prefix, $provider, '_', @type, '_value', $suffix)"/>
+          </xsl:attribute>
+          <xsl:value-of select="value/text()"/>
+        </field>
+      </xsl:for-each>
     </xsl:for-each>
   </xsl:template>
 
