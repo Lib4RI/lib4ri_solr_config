@@ -151,7 +151,7 @@
          indexing documents at once in IndexWriter; if more than this
          many threads arrive they will wait for others to finish.
          Default in Solr/Lucene is 8. -->
-    <!-- <maxIndexingThreads>8</maxIndexingThreads>  -->
+    <maxIndexingThreads>16</maxIndexingThreads>
 
     <!-- Expert: Enabling compound file will use less files for the index, 
          using fewer file descriptors on the expense of performance decrease. 
@@ -165,7 +165,7 @@
          before flushing.
          If both ramBufferSizeMB and maxBufferedDocs is set, then
          Lucene will flush based on whichever limit is hit first.  -->
-    <!-- <ramBufferSizeMB>100</ramBufferSizeMB> -->
+         <ramBufferSizeMB>640</ramBufferSizeMB>
     <!-- <maxBufferedDocs>1000</maxBufferedDocs> -->
 
     <!-- Expert: Merge Policy 
@@ -179,7 +179,7 @@
           <int name="maxMergeAtOnce">10</int>
           <int name="segmentsPerTier">10</int>
         </mergePolicy>
-      -->
+    -->
        
     <!-- Merge Factor
          The merge factor controls how many segments will get merged at a time.
@@ -344,9 +344,9 @@
          have some sort of hard autoCommit to limit the log size.
       -->
      <autoCommit> 
-       <maxDocs>200</maxDocs>
-       <maxTime>2000</maxTime> 
-       <openSearcher>true</openSearcher> 
+       <maxDocs>10000</maxDocs>
+       <maxTime>300000</maxTime> 
+       <openSearcher>false</openSearcher> 
      </autoCommit>
 
     <!-- softAutoCommit is like autoCommit except it causes a
@@ -354,11 +354,11 @@
          but does not ensure that data is synced to disk.  This is
          faster and more near-realtime friendly than a hard commit.
       -->
-     <!--
+     
        <autoSoftCommit> 
-         <maxTime>1000</maxTime> 
+         <maxTime>4000</maxTime> 
        </autoSoftCommit>
-      -->
+     
 
     <!-- Update Related Event Listeners
          
@@ -483,9 +483,9 @@
                and old cache.  
       -->
     <filterCache class="solr.FastLRUCache"
-                 size="512"
-                 initialSize="512"
-                 autowarmCount="0"/>
+                 size="7168"
+                 initialSize="1024"
+                 autowarmCount="1024"/>
 
     <!-- Query Result Cache
          
@@ -493,9 +493,9 @@
          (DocList) based on a query, a sort, and the range of documents requested.  
       -->
     <queryResultCache class="solr.LRUCache"
-                     size="512"
-                     initialSize="512"
-                     autowarmCount="0"/>
+                     size="15360"
+                     initialSize="4096"
+                     autowarmCount="3072"/>
    
     <!-- Document Cache
 
@@ -504,8 +504,8 @@
          this cache will not be autowarmed.  
       -->
     <documentCache class="solr.LRUCache"
-                   size="512"
-                   initialSize="512"
+                   size="18000"
+                   initialSize="9000"
                    autowarmCount="0"/>
     
     <!-- Field Value Cache
@@ -514,12 +514,12 @@
          by document id.  The fieldValueCache is created by default
          even if not configured here.
       -->
-    <!--
+    
        <fieldValueCache class="solr.FastLRUCache"
-                        size="512"
-                        autowarmCount="128"
+                        size="8192"
+                        autowarmCount="512"
                         showItems="32" />
-      -->
+     
 
     <!-- Custom Cache
 
@@ -577,7 +577,7 @@
         then documents 0 through 49 will be collected and cached.  Any further
         requests in that range can be satisfied via the cache.  
      -->
-   <queryResultWindowSize>50</queryResultWindowSize>
+   <queryResultWindowSize>100</queryResultWindowSize>
 
    <!-- Maximum number of documents to cache for any entry in the
         queryResultCache. 
@@ -696,7 +696,7 @@
          The options below instruct Solr not to output any HTTP Caching
          related headers
       -->
-    <httpCaching never304="true" />
+    <httpCaching never304="false" />
     <!-- If you include a <cacheControl> directive, it will be used to
          generate a Cache-Control header (as well as an Expires header
          if the value contains "max-age=")
@@ -736,12 +736,12 @@
          (lastModifiedFrom and etagSeed are both ignored if you use
          the never304="true" option)
       -->
-    <!--
+   
        <httpCaching lastModifiedFrom="openTime"
                     etagSeed="Solr">
          <cacheControl>max-age=30, public</cacheControl> 
        </httpCaching>
-      -->
+      
   </requestDispatcher>
 
   <!-- Request Handlers 
@@ -1734,7 +1734,7 @@
        every xsltCacheLifetimeSeconds.  
     -->
   <queryResponseWriter name="xslt" class="solr.XSLTResponseWriter">
-    <int name="xsltCacheLifetimeSeconds">5</int>
+    <int name="xsltCacheLifetimeSeconds">7200</int>
   </queryResponseWriter>
 
   <!-- Query Parsers
